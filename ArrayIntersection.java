@@ -7,6 +7,30 @@ public class ArrayIntersection {
 
   public static ArrayList<Integer> findIntersection(int[] arr1, int[] arr2) {
     ArrayList<Integer> result = new ArrayList<Integer>();
+    int p1 = 0;
+    int p2 = 0;
+
+    while (p1 < arr1.length && p2 < arr2.length) {
+      if (arr1[p1] == arr2[p2]) {
+        result.add(arr1[p1]);
+        p1++;
+        p2++;
+      } else if (arr1[p1] > arr2[p2]) {
+        while (p2 < arr2.length && arr2[p2] < arr1[p1]) {
+          p2++;
+        }
+      } else {
+        while (p1 < arr1.length && arr1[p1] < arr2[p2]) {
+          p1++;
+        }
+      }
+    }
+    return result;
+  }
+
+
+  public static ArrayList<Integer> firstPass(int[] arr1, int[] arr2) {
+    ArrayList<Integer> result = new ArrayList<Integer>();
     HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
 
     for (int i = 0; i < arr1.length; i++) {
@@ -66,47 +90,37 @@ public class ArrayIntersection {
     return -1;
   }
 
+  public static void printArray(ArrayList<Integer> arr, String answer) {
+    for (int i : arr) {
+      System.out.print(i);
+      System.out.print(", ");
+    }
+    System.out.println(answer);
+  }
+
 
 	public static void main(String[] args) {
-    int[] one = {1, 2, 3, 4, 5};
-    int[] two = {1, 2, 3, 4, 5};
-    ArrayList<Integer> test = findIntersection(one, two);
+    int[] a = {1, 2, 3, 4, 5};
+    int[] b = {1, 2, 3, 4, 5};
+    ArrayList<Integer> test = findIntersection(a, b);
+    printArray(test, "--> 1, 2, 3, 4, 5");
 
-    for (int i : test) {
-      System.out.print(i);
-      System.out.print(",");
-    }
-    System.out.println();
+    int[] c = {1, 2, 3, 4, 5};
+    int[] d = {6, 7, 8, 9};
+    test = findIntersection(c, d);
+    printArray(test, "--> ");
 
-    int[] three = {1, 2, 3, 4, 5};
-    int[] four = {6, 7, 8, 9};
-    test = findIntersection(three, four);
+    int[] e = {};
+    int[] f = {};
+    test = findIntersection(e, f);
+    printArray(test, "--> ");
 
-    for (int i : test) {
-      System.out.print(i);
-      System.out.print(",");
-    }
-    System.out.println();
+    int[] g = {1,2,3,3,3,3};
+    int[] h = {3,3,4};
+    test = findIntersection(g, h);
+    printArray(test, "--> 3, 3");
 
-    int[] five = {};
-    int[] six = {};
-    test = findIntersection(five, six);
 
-    for (int i : test) {
-      System.out.print(i);
-      System.out.print(",");
-    }
-    System.out.println();
-
-    int[] a = {1,2,3,3,3,3};
-    int[] b = {3,3,4};
-    test = findIntersection(a, b);
-
-    for (int i : test) {
-      System.out.print(i);
-      System.out.print(",");
-    }
-    System.out.println();
 
 
 	}
