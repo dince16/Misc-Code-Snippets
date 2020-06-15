@@ -43,23 +43,6 @@ public class Solution {
             }
         }
         return true;
-
-        // boolean[][] visited = new boolean[board.length][board[0].length];
-        // boolean filled = false;
-        // for (int i = 0; i < board.length; i++) {
-        //     for (int j = 0; j < board[0].length; j++) {
-        //         // if cell is 0 and not visited
-        //         if (board[i][j] == 0 && !visited[i][j]) {
-        //             if (filled) {
-        //                 return false;
-        //             } else {
-        //                 dfs(board, visited, i, j);
-        //                 filled = true;
-        //             }
-        //         }
-        //     }
-        // }
-        // return true;
     }
 
     public static void main(String[] args) {
@@ -173,7 +156,7 @@ public class Solution {
         System.out.println(isReachable(board3, end1)); // false
         System.out.println(isReachable(board3, end2)); // false
         System.out.println(isReachable(board4, end1)); // true
-        System.out.println(isReachable(board4, end2)); // true
+        System.out.println(isReachable(board4, end2)); // false
         System.out.println(isReachable(board5, end1)); // true
         System.out.println(isReachable(board5, end2)); // false
         System.out.println(isReachable(board6, end1)); // false
